@@ -1,5 +1,20 @@
 .App {
-    font-family: "Montserrat", sans-serif;
-    background-color: #f8f8f8;
-    min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f8f8;
+  min-height: 100vh;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+a:hover {
+    text-decoration: none;
+  }
+
+i {
+  font-size: 1.3rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+

@@ -2,4 +2,14 @@
     background-color: #1e1f21;
 }
 
+.Nav {
+    color: #ebf1f4b4 !important;
+    font-weight: 400;
+    transition: color ease-in-out .2s;
+}
+
+.Nav:hover {
+    color: #ebf1f4 !important;
+    transition: color ease-in-out .2s;
+}
 
