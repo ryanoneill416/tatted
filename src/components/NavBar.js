@@ -11,10 +11,10 @@ const NavBar = () => {
         <Navbar.Brand><img src={logo} alt="logo" height="55"/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>Sign In</Nav.Link>
-            <Nav.Link>Sign Up</Nav.Link>
+          <Nav className="ml-auto">
+            <Nav.Link><i className="fa-solid fa-house"/>Home</Nav.Link>
+            <Nav.Link><i className="fa-solid fa-right-to-bracket"/>Sign In</Nav.Link>
+            <Nav.Link><i className="fa-solid fa-user-plus"/>Sign Up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
