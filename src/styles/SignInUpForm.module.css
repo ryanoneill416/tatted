@@ -11,6 +11,12 @@
   padding: 10px;
 }
 
+.Check {
+  border-radius: 2px;
+  text-align: center;
+  padding: 10px;
+}
+
 .Header {
   font-style: normal;
   font-weight: bold;
@@ -30,17 +36,17 @@
 }
 
 .Link:hover {
-    color: #212427;
+  color: #212427;
 }
 
 .Link span {
-  color: #7852A9;
-  transition: color ease-in-out .2s;
+  color: #7852a9;
+  transition: color ease-in-out 0.2s;
 }
 
 .Link span:hover {
-    color: #b57dff;
-    transition: color ease-in-out .2s;
+  color: #b57dff;
+  transition: color ease-in-out 0.2s;
 }
 
 .Container {
