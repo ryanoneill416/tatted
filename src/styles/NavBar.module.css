@@ -5,15 +5,23 @@
 .Nav {
     color: #ebf1f4b4 !important;
     font-weight: 400;
-    transition: color ease-in-out .2s;
+    transition: color ease-in-out .3s;
     padding: 5px;
+}
+
+.Nav i {
+    transition: color ease-in-out .3s;
 }
 
 .Nav:hover {
     color: #ebf1f4 !important;
-    transition: color ease-in-out .2s;
+    transition: color ease-in-out .3s;
 }
 
 .Active {
     color: #ebf1f4 !important;
+}
+
+.Active i {
+    color: #b57dff !important;
 }

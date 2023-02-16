@@ -1,5 +1,12 @@
+.FillerImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
 .App {
   font-family: "Montserrat", sans-serif;
+  color: #212427;
   background-color: #f8f8f8;
   min-height: 100vh;
 }
@@ -8,13 +15,38 @@
   padding-top: 90px;
 }
 
+.Content {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 1px;
+  border: 1px solid #dadadf;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 6px 3px -2px;
+  overflow: hidden;
+}
+
+.Image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 * {
   box-sizing: border-box;
 }
 
+a {
+  color: #555555;
+  transition: color ease-in-out 0.3s;
+}
+
 a:hover {
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
+
+a:hover i {
+  color: #b57dff;
+  transition: color ease-in-out 0.3s;
+}
 
 i {
   font-size: 1.3rem;
