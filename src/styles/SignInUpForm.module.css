@@ -10,6 +10,14 @@
   padding: 10px;
 }
 
+.Selector {
+  background: #ffffff;
+  border: 1px solid #f0f1f9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  text-align: center;
+}
+
 .Check {
   border-radius: 2px;
   text-align: center;
