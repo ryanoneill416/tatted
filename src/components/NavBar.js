@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import logo from "../assets/tatted-logo-no-bg.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
+  const currentUser = useContext(CurrentUserContext);
+  const authenticatedIcons = <>{currentUser?.username}</>
+  const unauthenticatedIcons = (
+    <>
+      <NavLink
+        className={styles.Nav}
+        activeClassName={styles.Active}
+        to="/signin"
+      >
+        <i className="fa-solid fa-right-to-bracket" />
+        Sign In
+      </NavLink>
+      <NavLink
+        className={styles.Nav}
+        activeClassName={styles.Active}
+        to="/signup"
+      >
+        <i className="fa-solid fa-user-plus" />
+        Sign Up
+      </NavLink>
+    </>
+  );
+
   return (
     <Navbar variant="dark" expand="md" fixed="top" className={styles.NavBar}>
       <Container>
@@ -27,22 +51,7 @@ const NavBar = () => {
               <i className="fa-solid fa-house" />
               Home
             </NavLink>
-            <NavLink
-              className={styles.Nav}
-              activeClassName={styles.Active}
-              to="/signin"
-            >
-              <i className="fa-solid fa-right-to-bracket" />
-              Sign In
-            </NavLink>
-            <NavLink
-              className={styles.Nav}
-              activeClassName={styles.Active}
-              to="/signup"
-            >
-              <i className="fa-solid fa-user-plus" />
-              Sign Up
-            </NavLink>
+            {currentUser ? authenticatedIcons : unauthenticatedIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>
