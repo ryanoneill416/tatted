@@ -53,7 +53,7 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       console.log(signUpData)
-      await axios.post("/dj-rest-auth/registration/", signUpData);
+      await axios.post("/register/", signUpData);
       history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data);
@@ -134,7 +134,7 @@ const SignUpForm = () => {
                 className={styles.Input}
                 type="checkbox"
                 value={is_artist}
-                label="I Am A Tattoo Artist"
+                label="Join as a tattoo artist"
                 onChange={handleChecked}
                 checked={checked}
               />
