@@ -5,15 +5,13 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -75,7 +73,7 @@ const SignUpForm = () => {
       </Col>
       <Col className="my-auto py-2 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
-          <h1 className={styles.Header}>sign up</h1>
+          <h1 className={`${styles.Header} pb-3`}>sign up</h1>
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
@@ -131,7 +129,7 @@ const SignUpForm = () => {
 
             <Form.Group controlId="is_artist">
               <Form.Check
-                className={styles.Input}
+                className={styles.Check}
                 type="checkbox"
                 value={is_artist}
                 label="Join as a tattoo artist"
@@ -145,7 +143,7 @@ const SignUpForm = () => {
               variant="primary"
               type="submit"
             >
-              Submit
+              Sign Up
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
