@@ -21,18 +21,16 @@ function SignInForm() {
   });
   const { username, password } = signInData;
 
-  const { errors, setErrors } = useState({});
+  const [ errors, setErrors ] = useState({});
 
   const history = useHistory();
 
   const handleChange = (event) => {
     setSignInData({
-      ...signInData({
         ...signInData,
         [event.target.name]: event.target.value,
-      }),
-    });
-  };
+      });
+    };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
