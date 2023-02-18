@@ -15,6 +15,33 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 
 function SignInForm() {
+  const [signInData, setSignInData] = useState({
+    username: "",
+    password: "",
+  });
+  const { username, password } = signInData;
+
+  const history = useHistory();
+
+  const handleChange = (event) => {
+    setSignInData({
+      ...signInData({
+        ...signInData,
+        [event.target.name]: event.target.value,
+      }),
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("/dj-rest-auth/login/", signInData);
+      history.push("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Row className={styles.Row}>
       <Col
@@ -64,7 +91,6 @@ function SignInForm() {
             >
               Sign In
             </Button>
-
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
