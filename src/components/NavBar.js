@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -11,25 +11,13 @@ import {
 } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import useClickAwayToggle from "../hooks/useClickAwayToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrenUser = useSetCurrentUser();
 
-  const [expanded, setExpanded] = useState(false);
-  const ref = useRef(null);
-  useEffect(() => {
-    const handleClickAway = (event) => {
-      if (ref.current && !ref.current.contains(event.target)){
-        setExpanded(false)
-      }
-    }
-
-    document.addEventListener('mouseup', handleClickAway)
-    return () => {
-      document.removeEventListener('mouseup', handleClickAway)
-    }
-  }, [ref])
+  const { expanded, setExpanded, ref } = useClickAwayToggle();
 
   const handleSignOut = async () => {
     try {
