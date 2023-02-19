@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import logo from "../assets/tatted-logo-no-bg.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
 
@@ -13,14 +16,29 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrenUser = useSetCurrentUser();
 
+  const [expanded, setExpanded] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const handleClickAway = (event) => {
+      if (ref.current && !ref.current.contains(event.target)){
+        setExpanded(false)
+      }
+    }
+
+    document.addEventListener('mouseup', handleClickAway)
+    return () => {
+      document.removeEventListener('mouseup', handleClickAway)
+    }
+  }, [ref])
+
   const handleSignOut = async () => {
     try {
-      await axios.post("dj-rest-auth/logout/")
-      setCurrenUser(null)
-    } catch(err) {
-      console.log(err)
+      await axios.post("dj-rest-auth/logout/");
+      setCurrenUser(null);
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   const newPostIcon = (
     <NavLink
@@ -56,13 +74,9 @@ const NavBar = () => {
         to={`/profiles/${currentUser?.profile_id}`}
         onClick={() => {}}
       >
-        <Avatar src={currentUser?.profile_image} height={40} />
+        <Avatar src={currentUser?.profile_image} height={40} text="Profile" />
       </NavLink>
-      <NavLink
-        className={styles.Nav}
-        to="/"
-        onClick={handleSignOut}
-      >
+      <NavLink className={styles.Nav} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out" />
         Sign Out
       </NavLink>
@@ -91,7 +105,13 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar variant="dark" expand="md" fixed="top" className={styles.NavBar}>
+    <Navbar
+      expanded={expanded}
+      variant="dark"
+      expand="lg"
+      fixed="top"
+      className={styles.NavBar}
+    >
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
@@ -99,7 +119,11 @@ const NavBar = () => {
           </Navbar.Brand>
         </NavLink>
         {currentUser && newPostIcon}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-center">
             <NavLink
