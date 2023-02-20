@@ -62,7 +62,7 @@ const NavBar = () => {
         to={`/profiles/${currentUser?.profile_id}`}
         onClick={() => {}}
       >
-        <Avatar src={currentUser?.profile_image} height={40} text="Profile" />
+        <Avatar src={currentUser?.profile_image} height={35} text="Profile" />
       </NavLink>
       <NavLink className={styles.Nav} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out" />
@@ -106,7 +106,7 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="55" />
           </Navbar.Brand>
         </NavLink>
-        {currentUser && newPostIcon}
+        {currentUser?.is_artist && newPostIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
