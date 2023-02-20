@@ -41,3 +41,12 @@
 .BlackOutline {
   background-color: #7852a9;
 }
+
+.Secondary {
+  background-color: #ebebebdd;
+  color: #212427;
+}
+
+.Secondary:hover {
+  background-color: #aaaaaa;
+}

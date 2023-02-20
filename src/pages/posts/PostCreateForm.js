@@ -20,13 +20,13 @@ function PostCreateForm() {
       {/* Add your form fields here */}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Secondary}`}
         onClick={() => {}}
       >
-        cancel
+        Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+      <Button className={`${btnStyles.Button} ${btnStyles.Black}`} type="submit">
+        Submit
       </Button>
     </div>
   );
