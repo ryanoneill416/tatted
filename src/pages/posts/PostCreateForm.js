@@ -6,18 +6,54 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/uploading-arrow-signal.png";
+import Upload from "../../assets/uploading-arrow-signal.webp";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import Asset from "../../components/Asset";
 
 function PostCreateForm() {
   const [errors, setErrors] = useState({});
 
+
+
   const textFields = (
     <div className="text-center">
-      {/* Add your form fields here */}
+      <Form.Group>
+        <Form.Label>Tattoo Style</Form.Label>
+
+        <Form.Control
+          as="select"
+          name="category"
+          className="text-center"
+          value=""
+          onChange={() => {}}
+          aria-label="style"
+        >
+          <option>Select a style</option>
+          <option value="traditional">Traditional</option>
+          <option value="neo-traditional">Neo-Traditional</option>
+          <option value="japanese">Japanese</option>
+          <option value="realism">Realism</option>
+          <option value="fineline">Fineline</option>
+          <option value="blackwork">Blackwork</option>
+          <option value="color">Color</option>
+          <option value="script">Script</option>
+          <option value="other">Other</option>
+        </Form.Control>
+      </Form.Group>
+
+      <Form.Group className="mt-3">
+        <Form.Label>Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          name="content"
+          rows={8}
+          value=""
+          onChange={() => {}}
+        />
+      </Form.Group>
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Secondary}`}
@@ -25,7 +61,10 @@ function PostCreateForm() {
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Black}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Black}`}
+        type="submit"
+      >
         Submit
       </Button>
     </div>
@@ -43,7 +82,7 @@ function PostCreateForm() {
                 className="d-flex justify-content-center"
                 htmlFor="image-upload"
               >
-                ASSET
+                <Asset src={Upload} message="Click or tap to upload an image" />
               </Form.Label>
             </Form.Group>
             <div className="d-md-none">{textFields}</div>

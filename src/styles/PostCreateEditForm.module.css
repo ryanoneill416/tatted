@@ -1,3 +1,12 @@
 .Container {
-    min-height: 350px;
+  min-height: 350px;
+}
+
+.Input {
+  background: #ffffff;
+  border: 1px solid #f0f1f9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  text-align: center;
+  padding: 10px;
 }
