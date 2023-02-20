@@ -16,7 +16,18 @@ import Asset from "../../components/Asset";
 function PostCreateForm() {
   const [errors, setErrors] = useState({});
 
+  const [postData, setPostData] = useState({
+    style: "",
+    content: "",
+  });
+  const { style, content } = postData;
 
+  const handleChange = (event) => {
+    setPostData({
+      ...postData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const textFields = (
     <div className="text-center">
@@ -25,10 +36,10 @@ function PostCreateForm() {
 
         <Form.Control
           as="select"
-          name="category"
+          name="style"
           className="text-center"
-          value=""
-          onChange={() => {}}
+          value={style}
+          onChange={handleChange}
           aria-label="style"
         >
           <option>Select a style</option>
@@ -50,8 +61,8 @@ function PostCreateForm() {
           as="textarea"
           name="content"
           rows={8}
-          value=""
-          onChange={() => {}}
+          value={content}
+          onChange={handleChange}
         />
       </Form.Group>
 
