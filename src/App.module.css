@@ -54,3 +54,6 @@ i {
   vertical-align: middle;
 }
 
+input[type="file"] {
+  display: none;
+}
