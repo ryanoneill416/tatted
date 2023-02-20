@@ -106,7 +106,7 @@ function PostCreateForm() {
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Secondary}`}
-        onClick={() => {}}
+        onClick={() => history.goBack()}
       >
         Cancel
       </Button>
