@@ -114,9 +114,9 @@ const Post = (props) => {
       </Link>
       <Card.Body>
         {content && <Card.Text>{content}</Card.Text>}
-        <Link to="/" className={`${btnStyles.Button} ${btnStyles.Black} ${styles.Style}`}>
+        <span className={styles.Style}>
             {style}
-        </Link>
+        </span>
         <div className={`${styles.PostBar} pt-3`}>
             {is_owner ? (
                 <OverlayTrigger placement="top" overlay={<Tooltip>You cannot like your own post!</Tooltip>}>

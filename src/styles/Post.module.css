@@ -19,7 +19,7 @@ h5 {
 }
 
 .Heart:hover {
-  color: #b57dff;;
+  color: #b57dff;
 }
 
 .HeartOutline:hover {
@@ -28,7 +28,7 @@ h5 {
 
 .Owner {
   color: #212427;
-  transition: color ease-in-out .2s;
+  transition: color ease-in-out 0.2s;
 }
 
 .Owner:hover {
@@ -37,22 +37,30 @@ h5 {
 }
 
 .Style {
-    font-size: medium;
+  font-size: medium;
+  align-self: center;
+  border-radius: 7.5px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
+  text-transform: capitalize;
+  background-color: #212427;
+  color: #ffffff;
 }
 
 .CommentLogo {
-    color: #212427;
-    transition: .2s ease-in-out color;
+  color: #212427;
+  transition: 0.2s ease-in-out color;
 }
 
 span i {
-    color: #212427;
-    transition: .2s ease-in-out color;
+  color: #212427;
+  transition: 0.2s ease-in-out color;
 }
 
 span i:hover {
-    transition: .2s ease-in-out color;
-    cursor: pointer;
+  transition: 0.2s ease-in-out color;
+  cursor: pointer;
 }
-
-
