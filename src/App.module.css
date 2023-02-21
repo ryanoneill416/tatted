@@ -20,7 +20,8 @@
   padding: 10px;
   border-radius: 1px;
   border: 1px solid #dadadf;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 6px 3px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 6px 3px -2px;
   overflow: hidden;
 }
 
@@ -33,7 +34,6 @@
 * {
   box-sizing: border-box;
 }
-
 
 a {
   color: #555555;
@@ -57,4 +57,9 @@ i {
 
 input[type="file"] {
   display: none;
+}
+
+* input:focus {
+  box-shadow: none !important;
+  border: 1px solid #dadadf !important;
 }
