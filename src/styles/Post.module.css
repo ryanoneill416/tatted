@@ -15,11 +15,11 @@ h5 {
 }
 
 .Heart {
-  color: #b57dff;
+  color: #212427;
 }
 
 .Heart:hover {
-  color: #212427;
+  color: #b57dff;;
 }
 
 .HeartOutline:hover {
@@ -38,6 +38,11 @@ h5 {
 
 .Style {
     font-size: medium;
+}
+
+.CommentLogo {
+    color: #212427;
+    transition: .2s ease-in-out color;
 }
 
 span i {
