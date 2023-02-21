@@ -33,14 +33,14 @@ function PostDetailPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
+        <p>Popping artists mobile</p>
         <Post {...post.results[0]} setPosts={setPost} postDetailPage/>
         <Container className={appStyles.Content}>
           Comments
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles for desktop
+        Popping artists desktop
       </Col>
     </Row>
   );
