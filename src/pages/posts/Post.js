@@ -63,6 +63,38 @@ const Post = (props) => {
     }
   }
 
+  const handleSave = async () => {
+    try {
+        const {data} = await axiosRes.post('/saves/', {post:id})
+        setPosts((prevPosts) => ({
+            ...prevPosts,
+            results: prevPosts.results.map((post) => {
+                return post.id === id
+                ? {...post, save_id: data.id}
+                : post
+            }),
+        }))
+    } catch(err) {
+        console.log(err)
+    }
+  }
+
+  const handleUnsave = async () => {
+    try {
+        await axiosRes.delete(`/saves/${save_id}`)
+        setPosts((prevPosts) => ({
+            ...prevPosts,
+            results: prevPosts.results.map((post) => {
+                return post.id === id
+                ? {...post, save_id: null}
+                : post
+            }),
+        }))
+    } catch(err) {
+        console.log(err)
+    }
+  }
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -113,11 +145,11 @@ const Post = (props) => {
                     <i className="far fa-bookmark" />
                 </OverlayTrigger>
             ) : save_id ? (
-                <span onClick={()=>{}}>
+                <span onClick={handleUnsave}>
                     <i className={`fas fa-bookmark ${styles.Heart}`} />
                 </span>
             ) : currentUser ? (
-                <span onClick={()=>{}}>
+                <span onClick={handleSave}>
                     <i className={`far fa-bookmark ${styles.HeartOutline}`} />
                 </span>
             ) : (
