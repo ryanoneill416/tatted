@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo from "../assets/tatted-logo-no-bg.png";
+import logo from "../assets/tatted.logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import {
@@ -103,7 +103,7 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="55" />
+            <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
         {currentUser?.is_artist && newPostIcon}
