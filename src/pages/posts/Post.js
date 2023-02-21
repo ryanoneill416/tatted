@@ -8,6 +8,7 @@ import Media from "react-bootstrap/Media";
 import { Link } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Post = (props) => {
   const {
@@ -24,10 +25,27 @@ const Post = (props) => {
     image,
     updated_at,
     postDetailPage,
+    setPosts,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const handleLike = async () => {
+    try {
+        const {data} = await axiosRes.post('/likes/', {post:id})
+        setPosts((prevPosts) => ({
+            ...prevPosts,
+            results: prevPosts.results.map((post) => {
+                return post.id === id
+                ? {...post, likes_count: post.likes_count + 1, like_id: data.id}
+                : post
+            }),
+        }))
+    } catch(err) {
+        console.log(err)
+    }
+  }
 
   return (
     <Card className={styles.Post}>
@@ -61,7 +79,7 @@ const Post = (props) => {
                     <i className={`fas fa-heart ${styles.Heart}`} />
                 </span>
             ) : currentUser ? (
-                <span onClick={()=>{}}>
+                <span onClick={handleLike}>
                     <i className={`far fa-heart ${styles.HeartOutline}`} />
                 </span>
             ) : (
