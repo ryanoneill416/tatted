@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
+import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Avatar from "../../components/Avatar";
 import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import { Link } from "react-router-dom";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Post = (props) => {
   const {
@@ -16,16 +22,57 @@ const Post = (props) => {
     style,
     image,
     updated_at,
+    postDetailPage,
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner
+  const is_owner = currentUser?.username === owner;
 
-  return <Card className={styles.Post}>
-    <Card.Body>
-
-    </Card.Body>
-  </Card>;
+  return (
+    <Card className={styles.Post}>
+      <Card.Body>
+        <Media className="align-items-center justify-content-between">
+          <Link to={`/profiles/${profile_id}`} className={styles.Owner}>
+            <Avatar src={profile_image} height={60} />
+            {owner}
+          </Link>
+          <div className="d-flex align-items-center">
+            <span>{updated_at}</span>
+            {is_owner && postDetailPage && "..."}
+          </div>
+        </Media>
+      </Card.Body>
+      <Link to={`/posts/${id}`}>
+        <Card.Img src={image} alt={`${style} style tattoo`} />
+      </Link>
+      <Card.Body>
+        {content && <Card.Text>{content}</Card.Text>}
+        <Link to="/" className={`${btnStyles.Button} ${btnStyles.Black} ${styles.Style}`}>
+            {style}
+        </Link>
+        <div className={styles.PostBar}>
+            {is_owner ? (
+                <OverlayTrigger placement="top" overlay={<Tooltip>You cannot like your own post!</Tooltip>}>
+                    <i className="far fa-heart" />
+                </OverlayTrigger>
+            ) : like_id ? (
+                <span onClick={()=>{}}>
+                    <i className={`fas fa-heart ${styles.Heart}`} />
+                </span>
+            ) : currentUser ? (
+                <span onClick={()=>{}}>
+                    <i className={`far fa-heart ${styles.HeartOutline}`} />
+                </span>
+            ) : (
+                <OverlayTrigger placement="top" overlay={<Tooltip>You must be signed in to like a post!</Tooltip>}>
+                    <i className="far fa-heart" />
+                </OverlayTrigger>
+            )}
+            {likes_count}
+        </div>
+      </Card.Body>
+    </Card>
+  );
 };
 
 export default Post;
