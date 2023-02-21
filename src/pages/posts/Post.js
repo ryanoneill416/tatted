@@ -18,6 +18,7 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
+    save_id,
     content,
     style,
     image,
@@ -50,7 +51,7 @@ const Post = (props) => {
         <Link to="/" className={`${btnStyles.Button} ${btnStyles.Black} ${styles.Style}`}>
             {style}
         </Link>
-        <div className={styles.PostBar}>
+        <div className={`${styles.PostBar} pt-3`}>
             {is_owner ? (
                 <OverlayTrigger placement="top" overlay={<Tooltip>You cannot like your own post!</Tooltip>}>
                     <i className="far fa-heart" />
@@ -69,6 +70,27 @@ const Post = (props) => {
                 </OverlayTrigger>
             )}
             {likes_count}
+            <Link to={`/posts/${id}`}>
+                <i className="far fa-comments" />
+            </Link>
+            {comments_count}
+            {is_owner ? (
+                <OverlayTrigger placement="top" overlay={<Tooltip>You cannot save your own post!</Tooltip>}>
+                    <i className="far fa-bookmark" />
+                </OverlayTrigger>
+            ) : save_id ? (
+                <span onClick={()=>{}}>
+                    <i className={`fas fa-bookmark ${styles.Heart}`} />
+                </span>
+            ) : currentUser ? (
+                <span onClick={()=>{}}>
+                    <i className={`far fa-bookmark ${styles.HeartOutline}`} />
+                </span>
+            ) : (
+                <OverlayTrigger placement="top" overlay={<Tooltip>You must be signed in to save a post!</Tooltip>}>
+                    <i className="far fa-bookmark" />
+                </OverlayTrigger>
+            )}
         </div>
       </Card.Body>
     </Card>
