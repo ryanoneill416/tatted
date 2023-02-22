@@ -13,7 +13,7 @@ const OptionsToggle = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const DropdownOptions = ({handleEdit}) => {
+export const DropdownOptions = ({handleEdit, handleDelete}) => {
   return (
     <Dropdown className="ml-2" drop="left">
       <Dropdown.Toggle as={OptionsToggle} className={styles.Toggle} />
@@ -31,7 +31,7 @@ export const DropdownOptions = ({handleEdit}) => {
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownIcon}
-          onClick={() => {}}
+          onClick={handleDelete}
           aria-label="delete"
         >
           <i className="fas fa-trash-alt" />
