@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
-import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Avatar from "../../components/Avatar";
 import Card from "react-bootstrap/Card";
@@ -9,6 +8,7 @@ import { Link } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { axiosRes } from "../../api/axiosDefaults";
+import { DropdownOptions } from "../../components/DropdownOptions";
 
 const Post = (props) => {
   const {
@@ -105,7 +105,7 @@ const Post = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && postDetailPage && "..."}
+            {is_owner && postDetailPage && <DropdownOptions />}
           </div>
         </Media>
       </Card.Body>

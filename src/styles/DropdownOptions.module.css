@@ -1,11 +1,25 @@
 .DropdownIcon {
-    display: inline-block;
-    max-width: 50%;
-    padding: 0px;
+  display: inline-block;
+  max-width: 50%;
+  padding: 0px;
+}
+
+.Toggle {
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.Toggle:hover {
+  color: #b57dff;
+  transition: 0.2s ease-in-out;
+}
+
+.DropdownIcon:hover {
+  background-color: transparent;
 }
 
 .Absolute {
-    position: absolute;
-    right: 0;
-    z-index: 99;
+  position: absolute;
+  right: 0;
+  z-index: 99;
 }
