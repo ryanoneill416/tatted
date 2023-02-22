@@ -11,6 +11,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
 import NoResults from "../../assets/noresults.png";
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const PostList = ({ message, filter = "" }) => {
   const [posts, setPosts] = useState({ results: [] });
@@ -58,9 +59,17 @@ const PostList = ({ message, filter = "" }) => {
         {hasLoaded ? (
           <>
             {posts.results.length ? (
-              posts.results.map((post) => (
-                <Post key={post.id} {...post} setPosts={setPosts} />
-              ))
+              <InfiniteScroll
+                children={
+                  posts.results.map((post) => (
+                    <Post key={post.id} {...post} setPosts={setPosts} />
+                  ))
+                }
+                dataLength={posts.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!posts.next}
+                next={() => {}}
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
