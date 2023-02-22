@@ -6,12 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/uploading-arrow-signal.webp";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import Image from "react-bootstrap/Image";
 import Figure from "react-bootstrap/Figure";
 import Alert from "react-bootstrap/Alert";
@@ -143,7 +140,7 @@ function PostEditForm() {
         className={`${btnStyles.Button} ${btnStyles.Black}`}
         type="submit"
       >
-        Submit
+        Save
       </Button>
     </div>
   );
@@ -156,31 +153,17 @@ function PostEditForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <Figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </Figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.BlackOutline} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change Image Selection
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
+              <Figure>
+                <Image className={appStyles.Image} src={image} rounded />
+              </Figure>
+              <div>
                 <Form.Label
-                  className="d-flex justify-content-center"
+                  className={`${btnStyles.Button} ${btnStyles.BlackOutline} btn`}
                   htmlFor="image-upload"
                 >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
+                  Change Image Selection
                 </Form.Label>
-              )}
+              </div>
               <Form.File
                 id="image-upload"
                 accept="image/"
