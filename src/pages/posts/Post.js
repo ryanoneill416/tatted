@@ -9,6 +9,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { axiosRes } from "../../api/axiosDefaults";
 import { DropdownOptions } from "../../components/DropdownOptions";
+import { useHistory } from "react-router-dom";
 
 const Post = (props) => {
   const {
@@ -30,6 +31,11 @@ const Post = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/posts/${id}/edit`)
+  }
 
   const handleLike = async () => {
     try {
@@ -105,7 +111,7 @@ const Post = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && postDetailPage && <DropdownOptions />}
+            {is_owner && postDetailPage && <DropdownOptions handleEdit={handleEdit} />}
           </div>
         </Media>
       </Card.Body>
