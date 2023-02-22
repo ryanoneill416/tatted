@@ -59,7 +59,7 @@ function SignInForm() {
           }
         />
       </Col>
-      <Col className="my-auto p-0 p-md-2" md={6}>
+      <Col className="my-auto py-0 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={`${styles.Header} pb-3`}>sign in</h1>
 
