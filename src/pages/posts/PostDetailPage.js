@@ -41,7 +41,19 @@ function PostDetailPage() {
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popping artists mobile</p>
         <Post {...post.results[0]} setPosts={setPost} postDetailPage />
-        <Container className={appStyles.Content}>Comments</Container>
+        <Container className={appStyles.Content}>
+          {currentUser ? (
+            <CommentCreateForm 
+              profile_id={currentUser.profile_id}
+              profile_image={profile_image}
+              post={id}
+              setPost={setPost}
+              setComments={setComments}
+            />
+          ) : comments.results.length ? (
+            "Comments will go here"
+          ) : null}
+        </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         Popping artists desktop
