@@ -36,21 +36,24 @@
 .BlackOutline:hover {
   background-color: #212427;
   color: #ffffff;
-  transition: background-color .2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .Black:hover,
 .BlackOutline {
   background-color: #7852a9;
   color: #ffffff;
-  transition: background-color .2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .Secondary {
   background-color: #ebebebdd;
   color: #212427;
+  transition: 0.2s ease-in-out;
 }
 
 .Secondary:hover {
   background-color: #aaaaaa;
+  color: #ffffff;
+  transition: 0.2s ease-in-out;
 }
