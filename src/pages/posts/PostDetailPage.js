@@ -17,6 +17,7 @@ import Comment from "../comments/Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function PostDetailPage() {
+  const [hasLoaded, setHasLoaded] = useState(false);
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
 
@@ -33,50 +34,61 @@ function PostDetailPage() {
         ]);
         setPost({ results: [post] });
         setComments(comments);
-      } catch (err) {
-        console.log(err);
-      }
+        setHasLoaded(true);
+      } catch (err) {}
     };
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 350);
 
-    handleMount();
+    return () => {
+      clearTimeout(timer);
+    };
   }, [id]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popping artists mobile</p>
-        <Post {...post.results[0]} setPosts={setPost} postDetailPage />
-        <Container className={appStyles.Content}>
-          {currentUser ? (
-            <CommentCreateForm
-              profile_id={currentUser.profile_id}
-              profile_image={profile_image}
-              post={id}
-              setPost={setPost}
-              setComments={setComments}
-            />
-          ) : comments.results.length ? (
-            "Comments:"
-          ) : null}
-          {comments.results.length ? (
-            <InfiniteScroll
-              children={comments.results.map((comment) => (
-                <Comment
-                  key={comment.id}
-                  {...comment}
+        {hasLoaded ? (
+          <>
+            <Post {...post.results[0]} setPosts={setPost} postDetailPage />
+            <Container className={appStyles.Content}>
+              {currentUser ? (
+                <CommentCreateForm
+                  profile_id={currentUser.profile_id}
+                  profile_image={profile_image}
+                  post={id}
                   setPost={setPost}
                   setComments={setComments}
                 />
-              ))}
-              dataLength={comments.results.length}
-              loader={<Asset spinner />}
-              hasMore={!!comments.next}
-              next={() => fetchMoreData(comments, setComments)}
-            />
-          ) : currentUser ? null : (
-            "No comments to be found... yet ;)"
-          )}
-        </Container>
+              ) : comments.results.length ? (
+                "Comments:"
+              ) : null}
+              {comments.results.length ? (
+                <InfiniteScroll
+                  children={comments.results.map((comment) => (
+                    <Comment
+                      key={comment.id}
+                      {...comment}
+                      setPost={setPost}
+                      setComments={setComments}
+                    />
+                  ))}
+                  dataLength={comments.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!comments.next}
+                  next={() => fetchMoreData(comments, setComments)}
+                />
+              ) : currentUser ? null : (
+                "No comments to be found... yet ;)"
+              )}
+            </Container>
+          </>
+        ) : (
+          <Asset spinner />
+        )}
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         Popping artists desktop
