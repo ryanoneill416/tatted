@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
+import commentStyles from "../../styles/Comment.module.css"
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
@@ -55,6 +56,17 @@ function PostDetailPage() {
           ) : comments.results.length ? (
             "Comments will go here"
           ) : null}
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <p key={comment.id}>
+                {comment.owner}: {comment.content}
+              </p>
+            ))
+          ) : currentUser ? (
+            <span>No comments</span>
+          ) : (
+            <span>No comments yet</span>
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
