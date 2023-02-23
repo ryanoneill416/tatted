@@ -8,10 +8,13 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
+import Asset from "../../components/Asset";
+import { fetchMoreData } from "../../utils/utils";
 
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function PostDetailPage() {
   const { id } = useParams();
@@ -55,18 +58,24 @@ function PostDetailPage() {
           ) : comments.results.length ? (
             "Comments:"
           ) : null}
-          {comments.results.length
-            ? comments.results.map((comment) => (
+          {comments.results.length ? (
+            <InfiniteScroll
+              children={comments.results.map((comment) => (
                 <Comment
                   key={comment.id}
                   {...comment}
                   setPost={setPost}
                   setComments={setComments}
                 />
-              ))
-            : currentUser
-            ? null
-            : "No comments to be found... yet ;)"}
+              ))}
+              dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => fetchMoreData(comments, setComments)}
+            />
+          ) : currentUser ? null : (
+            "No comments to be found... yet ;)"
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
