@@ -54,16 +54,16 @@ function PostDetailPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            "Comments:"
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (
               <Comment key={comment.id} {...comment}/>
             ))
           ) : currentUser ? (
-            <span>No comments</span>
+            null
           ) : (
-            <span>No comments yet</span>
+            "No comments to be found... yet ;)"
           )}
         </Container>
       </Col>
