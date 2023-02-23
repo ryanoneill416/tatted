@@ -24,13 +24,12 @@ function PostDetailPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }, {data: comments}] = await Promise.all([
+        const [{ data: post }, { data: comments }] = await Promise.all([
           axiosReq.get(`/posts/${id}`),
-          axiosReq.get(`/comments/?post=${id}`)
+          axiosReq.get(`/comments/?post=${id}`),
         ]);
         setPost({ results: [post] });
-        setComments(comments)
-        console.log(post);
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
@@ -46,7 +45,7 @@ function PostDetailPage() {
         <Post {...post.results[0]} setPosts={setPost} postDetailPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
-            <CommentCreateForm 
+            <CommentCreateForm
               profile_id={currentUser.profile_id}
               profile_image={profile_image}
               post={id}
@@ -56,15 +55,18 @@ function PostDetailPage() {
           ) : comments.results.length ? (
             "Comments:"
           ) : null}
-          {comments.results.length ? (
-            comments.results.map((comment) => (
-              <Comment key={comment.id} {...comment}/>
-            ))
-          ) : currentUser ? (
-            null
-          ) : (
-            "No comments to be found... yet ;)"
-          )}
+          {comments.results.length
+            ? comments.results.map((comment) => (
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  setPost={setPost}
+                  setComments={setComments}
+                />
+              ))
+            : currentUser
+            ? null
+            : "No comments to be found... yet ;)"}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
