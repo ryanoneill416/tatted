@@ -13,6 +13,7 @@ import NoResults from "../../assets/noresults.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import PoppingArtists from "../profiles/PoppingArtists";
 
 const PostList = ({ message, filter = "" }) => {
   const [posts, setPosts] = useState({ results: [] });
@@ -84,7 +85,7 @@ const PostList = ({ message, filter = "" }) => {
         )}
       </Col>
       <Col className="d-none d-lg-block p-0 p-lg-2" md={4}>
-        <p>Popping artists desktop</p>
+        <PoppingArtists />
       </Col>
     </Row>
   );
