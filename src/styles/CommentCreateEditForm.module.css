@@ -1,1 +1,10 @@
+.Form {
+  border: none;
+  border-bottom: 2px #b57dff solid;
+  box-shadow: none !important;
+}
+
+.Form:focus {
+    border-bottom: 2px #b57dff solid;
+}
 
