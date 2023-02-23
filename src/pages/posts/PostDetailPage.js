@@ -5,13 +5,13 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
-import commentStyles from "../../styles/Comment.module.css"
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
 
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Comment from "../comments/Comment";
 
 function PostDetailPage() {
   const { id } = useParams();
@@ -54,13 +54,11 @@ function PostDetailPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments will go here"
+            "Comments"
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (
-              <p key={comment.id}>
-                {comment.owner}: {comment.content}
-              </p>
+              <Comment key={comment.id} {...comment}/>
             ))
           ) : currentUser ? (
             <span>No comments</span>
