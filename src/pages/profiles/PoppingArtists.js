@@ -4,7 +4,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-const PoppingArtists = () => {
+const PoppingArtists = ({ mobile }) => {
   const [profileData, setProfileData] = useState({
     poppingProfiles: { results: [] },
     pageProfile: { results: [] },
@@ -23,19 +23,32 @@ const PoppingArtists = () => {
           poppingProfiles: data,
         }));
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     };
 
-    handleMount()
+    handleMount();
   }, [currentUser]);
 
   return (
-    <Container className={styles.Content}>
+    <Container
+      className={`${styles.Content} ${mobile && "d-lg-none text-center mb-3"}`}
+    >
       <p>Most Poppin' Artists</p>
-      {poppingProfiles.results.filter(profile => profile.is_artist === true).map((profile) => (
-        <p key={profile.id}>{profile.owner}</p>
-      ))}
+      {mobile ? (
+        <div className="d-flex justify-content-around">
+          {poppingProfiles.results
+            .filter((profile) => profile.is_artist === true)
+            .slice(0, 4)
+            .map((profile) => (
+              <p key={profile.id}>{profile.owner}</p>
+            ))}
+        </div>
+      ) : (
+        poppingProfiles.results
+          .filter((profile) => profile.is_artist === true)
+          .map((profile) => <p key={profile.id}>{profile.owner}</p>)
+      )}
     </Container>
   );
 };
