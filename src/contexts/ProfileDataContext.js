@@ -5,48 +5,58 @@ import { useCurrentUser } from "./CurrentUserContext";
 export const ProfileDataContext = createContext();
 export const SetProfileDataContext = createContext();
 
-export const useProfileData = () => useContext(ProfileDataContext)
-export const useSetProfileData = () => useContext(SetProfileDataContext)
+export const useProfileData = () => useContext(ProfileDataContext);
+export const useSetProfileData = () => useContext(SetProfileDataContext);
 
-export const ProfileDataProvider = ({children}) => {
-    const [profileData, setProfileData] = useState({
-        pageProfile: {results: []},
-        poppingProfiles: { results: [] },
+export const ProfileDataProvider = ({ children }) => {
+  const [profileData, setProfileData] = useState({
+    pageProfile: { results: [] },
+    poppingProfiles: { results: [] },
+  });
+
+  const currentUser = useCurrentUser();
+
+  const handleFollow = async (clickedProfile) => {
+    try {
+      const { data } = await axiosRes.post(`/followers/`, {
+        followed: clickedProfile.id,
       });
-     
-      const currentUser = useCurrentUser();
 
-      const handleFollow = async (clickedProfile) => {
-        try {
-          const {data} = await axiosRes.post(`/followers/`, {
-            followed: clickedProfile.id
-          })
-        } catch(err) {
-          console.log(err)
-        }
-      }
-     
-      useEffect(() => {
-        const handleMount = async () => {
-          try {
-            const { data } = await axiosReq.get(
-              "/profiles/?ordering=-followers_count"
-            );
-            setProfileData((prevState) => ({
-              ...prevState,
-              poppingProfiles: data,
-            }));
-          } catch (err) {
-          }
-        };
-        handleMount();
-      }, [currentUser]);
+      setProfileData((prevState) => ({
+        ...prevState,
+        pageProfile: {
+          results: prevState.pageProfile.results.map((profile) => ),
+        },
+        poppingProfiles: {
+          ...prevState.poppingProfiles,
+          results: prevState.poppingProfiles.results.map((profile) => ),
+        },
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-      return (
-        <ProfileDataContext.Provider value={profileData}>
-            <SetProfileDataContext.Provider value={{setProfileData, handleFollow}}>
-                {children}
-            </SetProfileDataContext.Provider>
-        </ProfileDataContext.Provider>
-      )
-}
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(
+          "/profiles/?ordering=-followers_count"
+        );
+        setProfileData((prevState) => ({
+          ...prevState,
+          poppingProfiles: data,
+        }));
+      } catch (err) {}
+    };
+    handleMount();
+  }, [currentUser]);
+
+  return (
+    <ProfileDataContext.Provider value={profileData}>
+      <SetProfileDataContext.Provider value={{ setProfileData, handleFollow }}>
+        {children}
+      </SetProfileDataContext.Provider>
+    </ProfileDataContext.Provider>
+  );
+};
