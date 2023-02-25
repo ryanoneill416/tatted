@@ -92,7 +92,7 @@ function ProfilePage() {
                   </button>
                 ) : (
                   <button
-                    className={`${btnStyles.Button} ${btnStyles.Black} ${btnStyles.ProfileFollow}`}
+                    className={`${btnStyles.Button} ${btnStyles.Black} ${btnStyles.ProfileFollow} mb-3`}
                     onClick={() => {}}
                   >
                     Follow

@@ -15,6 +15,7 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
+import PoppingArtists from "../profiles/PoppingArtists";
 
 function PostDetailPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -50,7 +51,7 @@ function PostDetailPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popping artists mobile</p>
+        <PoppingArtists mobile />
         {hasLoaded ? (
           <>
             <Post {...post.results[0]} setPosts={setPost} postDetailPage />
@@ -82,7 +83,7 @@ function PostDetailPage() {
                   next={() => fetchMoreData(comments, setComments)}
                 />
               ) : currentUser ? null : (
-                "No comments to be found... yet ;)"
+                "No comments have been posted... as of now ;)"
               )}
             </Container>
           </>
@@ -91,7 +92,7 @@ function PostDetailPage() {
         )}
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popping artists desktop
+        <PoppingArtists />
       </Col>
     </Row>
   );
