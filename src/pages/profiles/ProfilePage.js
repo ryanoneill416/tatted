@@ -32,20 +32,21 @@ function ProfilePage() {
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
-  const [profilePosts, setProfilePosts] = useState({results: []})
+  const [profilePosts, setProfilePosts] = useState({ results: [] });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, {data: profilePosts}] = await Promise.all([
-          axiosReq.get(`/profiles/${id}/`),
-          axiosReq.get(`/posts/?owner__profile=${id}`)
-        ]);
+        const [{ data: pageProfile }, { data: profilePosts }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/posts/?owner__profile=${id}`),
+          ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
-        setProfilePosts(profilePosts)
+        setProfilePosts(profilePosts);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -56,7 +57,7 @@ function ProfilePage() {
 
   const profileHeader = (
     <>
-      <Row noGutters className="px-3 text-center py-2">
+      <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
@@ -105,36 +106,43 @@ function ProfilePage() {
     </>
   );
 
-  const profilePostDisplay = <>
-    {profilePosts.results.length ? (
-        <InfiniteScroll
+  const profilePostDisplay = (
+    <>
+      {profilePosts.results.length ? (
+        <div className="mt-3">
+          <InfiniteScroll
             children={profilePosts.results.map((post) => (
-                <Post key={post.id} {...post} setPosts={setProfilePosts} />
+              <Post key={post.id} {...post} setPosts={setProfilePosts} />
             ))}
             dataLength={profilePosts.results.length}
             loader={<Asset spinner />}
             hasMore={!!profilePosts.next}
             next={() => fetchMoreData(profilePosts, setProfilePosts)}
-         />
-    ) : (
-        <Asset src={noResults} message={`No results found, ${profile?.owner} hasn't posted yet :)`}/>
-    )}
-  </>;
+          />
+        </div>
+      ) : profile?.is_artist === true ? (
+        <div className="mt-3">
+          <Asset
+            src={noResults}
+            message={`No results found, ${profile?.owner} hasn't posted yet :)`}
+          />
+        </div>
+      ) : null}
+    </>
+  );
 
   return (
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PoppingArtists mobile />
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {profileHeader}
-              {profilePostDisplay}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
-        </Container>
+        {hasLoaded ? (
+          <>
+            <Container className={appStyles.Content}>{profileHeader}</Container>
+            {profilePostDisplay}
+          </>
+        ) : (
+          <Asset spinner />
+        )}
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PoppingArtists />
