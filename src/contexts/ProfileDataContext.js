@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
+import { followHelper } from "../utils/utils";
 import { useCurrentUser } from "./CurrentUserContext";
 
-export const ProfileDataContext = createContext();
-export const SetProfileDataContext = createContext();
+const ProfileDataContext = createContext();
+const SetProfileDataContext = createContext();
 
 export const useProfileData = () => useContext(ProfileDataContext);
 export const useSetProfileData = () => useContext(SetProfileDataContext);
@@ -18,18 +19,22 @@ export const ProfileDataProvider = ({ children }) => {
 
   const handleFollow = async (clickedProfile) => {
     try {
-      const { data } = await axiosRes.post(`/followers/`, {
-        followed: clickedProfile.id,
+      const { data } = await axiosRes.post("/followers/", {
+        followed: clickedProfile.id + 21,
       });
 
       setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
-          results: prevState.pageProfile.results.map((profile) => ),
+          results: prevState.pageProfile.results.map((profile) =>
+            followHelper(profile, clickedProfile, data.id)
+          ),
         },
         poppingProfiles: {
           ...prevState.poppingProfiles,
-          results: prevState.poppingProfiles.results.map((profile) => ),
+          results: prevState.poppingProfiles.results.map((profile) =>
+            followHelper(profile, clickedProfile, data.id)
+          ),
         },
       }));
     } catch (err) {

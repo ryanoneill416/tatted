@@ -93,7 +93,7 @@ function ProfilePage() {
                 ) : (
                   <button
                     className={`${btnStyles.Button} ${btnStyles.Black} ${btnStyles.ProfileFollow} mb-3`}
-                    onClick={() => {handleFollow(profile)}}
+                    onClick={() => handleFollow(profile)}
                   >
                     Follow
                   </button>
