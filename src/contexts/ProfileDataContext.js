@@ -27,7 +27,6 @@ export const ProfileDataProvider = ({children}) => {
               poppingProfiles: data,
             }));
           } catch (err) {
-            console.log(err);
           }
         };
         handleMount();

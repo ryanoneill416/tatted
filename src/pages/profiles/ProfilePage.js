@@ -47,9 +47,9 @@ function ProfilePage() {
     fetchData();
   }, [id, setProfileData]);
 
-  const mainProfile = (
+  const profileHeader = (
     <>
-      <Row noGutters className="px-3 text-center pb-2">
+      <Row noGutters className="px-3 text-center py-2">
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
@@ -72,37 +72,33 @@ function ProfilePage() {
               <div>{profile?.following_count}</div>
               <div>following</div>
             </Col>
+            <Col className="pt-3">
+              {currentUser &&
+                !is_owner &&
+                (profile?.following_id ? (
+                  <button
+                    className={`${btnStyles.Button} ${btnStyles.Secondary} ${btnStyles.ProfileFollow}`}
+                    onClick={() => {}}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    className={`${btnStyles.Button} ${btnStyles.Black} ${btnStyles.ProfileFollow}`}
+                    onClick={() => {}}
+                  >
+                    Follow
+                  </button>
+                ))}
+            </Col>
           </Row>
-        </Col>
-        <Col lg={3} className="text-lg-right">
-          {currentUser &&
-            !is_owner &&
-            (profile?.following_id ? (
-              <button
-                className={`${btnStyles.Button} ${btnStyles.Secondary}`}
-                onClick={() => {}}
-              >
-                Unfollow
-              </button>
-            ) : (
-              <button
-                className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => {}}
-              >
-                Follow
-              </button>
-            ))}
         </Col>
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
   );
 
-  const mainProfilePosts = (
-    <>
-      
-    </>
-  );
+  const profilePosts = <></>;
 
   return (
     <Row>
@@ -111,8 +107,8 @@ function ProfilePage() {
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
-              {mainProfile}
-              {mainProfilePosts}
+              {profileHeader}
+              {profilePosts}
             </>
           ) : (
             <Asset spinner />

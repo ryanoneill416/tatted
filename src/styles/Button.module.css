@@ -32,6 +32,11 @@
   width: 100%;
 }
 
+.ProfileFollow {
+  width: 200px;
+  padding: 6.5px;
+}
+
 .Black,
 .BlackOutline:hover {
   background-color: #212427;
