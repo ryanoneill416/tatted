@@ -43,21 +43,29 @@ export const DropdownOptions = ({ handleEdit, handleDelete }) => {
 };
 
 export function EditProfileDropdown({ id }) {
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={OptionsToggle} />
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => history.push(`/profiles/${id}/edit/username`)} aria-label="edit-username">
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit/username`)}
+          aria-label="edit-username"
+          className={styles.ProfileDropdown}
+        >
           <i className="far fa-id-card" />
           Change Username
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => history.push(`/profiles/${id}/edit/password`)} aria-label="edit-password">
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit/password`)}
+          aria-label="edit-password"
+          className={styles.ProfileDropdown}
+        >
           <i className="fas fa-key" />
           Change Password
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  )
+  );
 }

@@ -23,3 +23,7 @@
   right: 0;
   z-index: 99;
 }
+
+.ProfileDropdown:hover {
+  background-color: transparent;
+}
