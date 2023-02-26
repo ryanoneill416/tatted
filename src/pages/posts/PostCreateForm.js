@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -18,10 +18,13 @@ import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirectUsers } from "../../hooks/useRedirectUsers";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostCreateForm() {
   useRedirectUsers('loggedOut')
   const [errors, setErrors] = useState({});
+  const currentUser = useCurrentUser();
+  const is_artist = currentUser?.is_artist === true;
 
   const [postData, setPostData] = useState({
     style: "",
@@ -33,6 +36,16 @@ function PostCreateForm() {
   const imageInput = useRef(null);
 
   const history = useHistory();
+
+  useEffect(() => {
+    const handleMount = () => {
+      if (!is_artist) {
+        history.push("/")
+      }
+    }
+
+    handleMount()
+  }, [history, is_artist])
 
   const handleChange = (event) => {
     setPostData({
