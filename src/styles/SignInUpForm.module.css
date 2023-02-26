@@ -50,10 +50,6 @@
   transition: color ease-in-out 0.2s;
 }
 
-.Container {
-  padding: 30px 10px;
-}
-
 .SignInCol {
   height: 320px;
 }

@@ -118,8 +118,8 @@ const Post = (props) => {
             <Avatar src={profile_image} height={60} />
             {owner}
           </Link>
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+          <div className="pb-1 d-flex align-items-center">
+            <span className={styles.UpdatedAt}>{updated_at}</span>
             {is_owner && postDetailPage && <DropdownOptions handleEdit={handleEdit} handleDelete={handleDelete} />}
           </div>
         </Media>

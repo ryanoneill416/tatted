@@ -17,12 +17,16 @@
 
 .Content {
   background-color: #ffffff;
-  padding: 10px;
   border-radius: 1px;
   border: 1px solid #dadadf;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 6px 3px -2px;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 99vw;
 }
 
 .Image {

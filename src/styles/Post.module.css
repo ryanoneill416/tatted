@@ -64,3 +64,8 @@ span i:hover {
   transition: 0.2s ease-in-out color;
   cursor: pointer;
 }
+
+.UpdatedAt {
+  font-size: smaller;
+  opacity: 75%;
+}

@@ -20,7 +20,7 @@ function App() {
   const profile_id = currentUser?.profile_id || "";
 
   return (
-    <div className={styles.App}>
+    <div className={`${styles.App} ${styles.Content}`}>
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
