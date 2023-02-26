@@ -1,3 +1,9 @@
 .WordBreak {
   word-break: break-all;
 }
+
+@media only screen and (max-width: 600px) {
+  .ArtistName {
+    font-size: small;
+  }
+}

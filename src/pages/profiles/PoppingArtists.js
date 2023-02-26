@@ -1,9 +1,12 @@
 import React from "react";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import styles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
+import logo from "../../assets/mostpoppin.png"
 
 const PoppingArtists = ({ mobile }) => {
   const { poppingProfiles } = useProfileData();
@@ -14,7 +17,11 @@ const PoppingArtists = ({ mobile }) => {
     >
       {poppingProfiles.results.length ? (
         <>
-          <p>Our Most Popular Artists</p>
+          <Row className="text-center">
+            <Col>
+              <img src={logo} height={40} className="my-3" alt="most popular artists"/>
+            </Col>
+          </Row>
           {mobile ? (
             <div className="d-flex justify-content-around">
               {poppingProfiles.results
