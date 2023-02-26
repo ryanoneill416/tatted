@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useHistory } from "react-router-dom";
 import styles from "../styles/DropdownOptions.module.css";
 
 const OptionsToggle = React.forwardRef(({ onClick }, ref) => (
@@ -13,7 +14,7 @@ const OptionsToggle = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const DropdownOptions = ({handleEdit, handleDelete}) => {
+export const DropdownOptions = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-2" drop="left">
       <Dropdown.Toggle as={OptionsToggle} className={styles.Toggle} />
@@ -40,3 +41,23 @@ export const DropdownOptions = ({handleEdit, handleDelete}) => {
     </Dropdown>
   );
 };
+
+export function EditProfileDropdown({ id }) {
+  const history = useHistory()
+
+  return (
+    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
+      <Dropdown.Toggle as={OptionsToggle} />
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={() => history.push(`/profiles/${id}/edit/username`)} aria-label="edit-username">
+          <i className="far fa-id-card" />
+          Change Username
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => history.push(`/profiles/${id}/edit/password`)} aria-label="edit-password">
+          <i className="fas fa-key" />
+          Change Password
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  )
+}
