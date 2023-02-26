@@ -34,7 +34,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/posts/create"
     >
-      <i className="far fa-plus-square" />
+      <i className="fas fa-circle-plus" />
       New Post
     </NavLink>
   );
@@ -106,7 +106,6 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        {currentUser?.is_artist && newPostIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
@@ -114,6 +113,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-center">
+          {currentUser?.is_artist && newPostIcon}
             <NavLink
               exact
               className={styles.Nav}
