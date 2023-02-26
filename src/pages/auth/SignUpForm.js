@@ -13,8 +13,10 @@ import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
+import { useRedirectUsers } from "../../hooks/useRedirectUsers";
 
 const SignUpForm = () => {
+  useRedirectUsers('loggedIn')
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
