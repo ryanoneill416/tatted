@@ -103,7 +103,12 @@ function ProfilePage() {
             </Col>
           </Row>
         </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
+        <Row noGutters className="w-100">
+              <Col>
+                <hr></hr>
+                <p>{profile?.bio && <Col className="pb-2">{profile.bio}</Col>}</p>
+              </Col>
+            </Row>
       </Row>
     </>
   );

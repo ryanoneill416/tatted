@@ -64,3 +64,6 @@ input:focus {
   border: 1px solid #dadadf !important;
 }
 
+.StrongLabel {
+  font-weight: 500;
+}

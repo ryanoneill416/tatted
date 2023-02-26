@@ -7,7 +7,7 @@ import Avatar from "../../components/Avatar";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
-  const { profile, mobile, imageSize = 55 } = props;
+  const { profile, mobile, imageSize = 45 } = props;
   const { id, following_id, image, owner } = profile;
 
   const currentUser = useCurrentUser();
@@ -16,13 +16,13 @@ const Profile = (props) => {
   const { handleFollow, handleUnfollow } = useSetProfileData();
 
   return (
-    <div className={`d-flex align-items-center ${mobile && "flex-column"}`}>
+    <div className={`d-flex align-items-center ${mobile && "flex-column"} py-2`}>
       <div>
         <Link className="align-self-center" to={`/profiles/${id}`}>
           <Avatar src={image} height={imageSize} />
         </Link>
       </div>
-      <div className={`mx-2 ${styles.WordBreak}`}>
+      <div className={`mx-1 mt-3 ${styles.WordBreak}`}>
         <p>{owner}</p>
       </div>
       <div className={`text-right ${!mobile && "ml-auto"}`}>
