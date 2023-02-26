@@ -17,7 +17,7 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-const UsernameForm = () => {
+const EditUsernameForm = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -54,7 +54,7 @@ const UsernameForm = () => {
 
   return (
     <Row>
-      <Col className="py-2 mx-auto text-center" md={6}>
+      <Col className="py-4 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
           <Form onSubmit={handleSubmit} className="my-2">
             <Form.Group>
@@ -90,4 +90,4 @@ const UsernameForm = () => {
   );
 };
 
-export default UsernameForm;
+export default EditUsernameForm;

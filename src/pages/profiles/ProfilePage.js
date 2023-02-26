@@ -103,12 +103,12 @@ function ProfilePage() {
             </Col>
           </Row>
         </Col>
-        <Row noGutters className="w-100">
-              <Col>
-                <hr></hr>
-                <p>{profile?.bio && <Col className="pb-2">{profile.bio}</Col>}</p>
-              </Col>
-            </Row>
+        {profile?.bio && <Row>
+          <Col>
+            <hr />
+            <p className="py-2">{profile.bio}</p>
+          </Col>
+        </Row>}
       </Row>
     </>
   );
@@ -144,7 +144,7 @@ function ProfilePage() {
         <PoppingArtists mobile />
         {hasLoaded ? (
           <>
-            <Container className={appStyles.Content}>{profileHeader}</Container>
+            <Container className={`${appStyles.Content} py-3`}>{profileHeader}</Container>
             {profilePostDisplay}
           </>
         ) : (
