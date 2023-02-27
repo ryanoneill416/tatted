@@ -26,7 +26,7 @@
   margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
-  max-width: 99vw;
+  max-width: 100%;
 }
 
 .Image {
@@ -71,3 +71,4 @@ input:focus {
 .StrongLabel {
   font-weight: 500;
 }
+

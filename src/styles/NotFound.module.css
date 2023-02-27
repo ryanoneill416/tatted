@@ -1,0 +1,17 @@
+.Distancing {
+    margin-top: 25vh;
+}
+
+.Image {
+    width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+    .Image {
+      width: 75vw;
+    }
+
+    .Text {
+        font-size: small;
+    }
+  }
