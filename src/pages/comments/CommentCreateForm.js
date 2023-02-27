@@ -43,7 +43,7 @@ function CommentCreateForm(props) {
   };
 
   return (
-    <Form className="mt-2 pt-2" onSubmit={handleSubmit}>
+    <Form className="mt-2 pt-2 pb-3" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
           <Link to={`/profiles/${profile_id}`}>
@@ -60,7 +60,7 @@ function CommentCreateForm(props) {
         </InputGroup>
       </Form.Group>
       <button
-        className={`${btnStyles.Button} ${btnStyles.Black} d-block ml-auto`}
+        className={`${btnStyles.Button} ${btnStyles.Black} d-block ml-auto mr-1`}
         disabled={!content.trim()}
         type="submit"
       >

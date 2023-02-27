@@ -85,7 +85,7 @@ function PostDetailPage() {
                   next={() => fetchMoreData(comments, setComments)}
                 />
               ) : currentUser ? null : (
-                "No comments have been posted... as of now ;)"
+                <p className="py-3 my-auto text-center">No comments have been made... yet ;)</p>
               )}
             </Container>
           </>
