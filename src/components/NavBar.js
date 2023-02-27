@@ -113,16 +113,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-center">
-          {currentUser?.is_artist && newPostIcon}
-            <NavLink
-              exact
-              className={styles.Nav}
-              activeClassName={styles.Active}
-              to="/"
-            >
-              <i className="fas fa-house" />
-              Home
-            </NavLink>
+            {currentUser?.is_artist && newPostIcon}
             {currentUser ? authenticatedIcons : unauthenticatedIcons}
           </Nav>
         </Navbar.Collapse>
