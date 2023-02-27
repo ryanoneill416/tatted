@@ -36,7 +36,9 @@ function PostDetailPage() {
         setPost({ results: [post] });
         setComments(comments);
         setHasLoaded(true);
-      } catch (err) {}
+      } catch (err) {
+        // console.log(err)
+      }
     };
     setHasLoaded(false);
     const timer = setTimeout(() => {
