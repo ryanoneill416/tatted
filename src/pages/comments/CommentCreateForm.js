@@ -43,15 +43,15 @@ function CommentCreateForm(props) {
   };
 
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
+    <Form className="mt-2 pt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} />
           </Link>
           <Form.Control
-            className={styles.Form}
-            placeholder="my comment..."
+            className={`${styles.Form} mt-1`}
+            placeholder="Add a comment..."
             as="textarea"
             value={content}
             onChange={handleChange}

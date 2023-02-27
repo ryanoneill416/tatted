@@ -1,8 +1,6 @@
 import React from 'react'
-import { Image } from 'react-bootstrap';
 import LostUserImage from '../assets/404oopsies.png';
 import styles from '../styles/NotFound.module.css';
-import Asset from './Asset';
 
 const NotFound = () => {
   return (

@@ -80,7 +80,7 @@ function SignInForm() {
               />
             </Form.Group>
             {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className="text-center">
                 {message}
               </Alert>
             ))}
@@ -97,7 +97,7 @@ function SignInForm() {
               />
             </Form.Group>
             {errors.password?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className="text-center">
                 {message}
               </Alert>
             ))}
@@ -110,7 +110,7 @@ function SignInForm() {
               Sign In
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
+              <Alert key={idx} variant="warning" className="mt-3 text-center">
                 {message}
               </Alert>
             ))}

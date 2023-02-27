@@ -27,13 +27,13 @@ h5 {
 }
 
 .Owner {
-  color: #212427;
+  color: #212427d5;
   transition: color ease-in-out 0.2s;
 }
 
 .Owner:hover {
   text-decoration: none;
-  color: #7852a9;
+  color: #212427;
 }
 
 .Style {
@@ -55,6 +55,10 @@ h5 {
   transition: 0.2s ease-in-out color;
 }
 
+.CommentLogo:hover {
+  color: #b57dff;
+}
+
 span i {
   color: #212427;
   transition: 0.2s ease-in-out color;
@@ -68,4 +72,14 @@ span i:hover {
 .UpdatedAt {
   font-size: smaller;
   opacity: 75%;
+}
+
+@media only screen and (max-width: 600px) {
+  p {
+    font-size: smaller;
+  }
+
+  .Style {
+    font-size: smaller;
+  }
 }

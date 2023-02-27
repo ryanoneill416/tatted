@@ -21,7 +21,7 @@ import { useRedirectUsers } from "../../hooks/useRedirectUsers";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostCreateForm() {
-  useRedirectUsers('loggedOut')
+  useRedirectUsers("loggedOut");
   const [errors, setErrors] = useState({});
   const currentUser = useCurrentUser();
   const is_artist = currentUser?.is_artist === true;
@@ -40,12 +40,12 @@ function PostCreateForm() {
   useEffect(() => {
     const handleMount = () => {
       if (!is_artist) {
-        history.push("/")
+        history.push("/");
       }
-    }
+    };
 
-    handleMount()
-  }, [history, is_artist])
+    handleMount();
+  }, [history, is_artist]);
 
   const handleChange = (event) => {
     setPostData({
@@ -84,11 +84,15 @@ function PostCreateForm() {
   };
 
   const textFields = (
-    <div className="text-center">
+    <div className="text-center pt-2 pb-3">
       <Form.Group>
         <Form.Label>Tattoo Style</Form.Label>
         {errors.style?.map((message, idx) => (
-          <Alert variant="warning" className={appStyles.Alert} key={idx}>
+          <Alert
+            variant="warning"
+            className={`${appStyles.Alert} text-center`}
+            key={idx}
+          >
             {message}
           </Alert>
         ))}
@@ -96,7 +100,7 @@ function PostCreateForm() {
         <Form.Control
           as="select"
           name="style"
-          className="text-center"
+          className={`${styles.Select} text-center`}
           value={style}
           onChange={handleChange}
           aria-label="style"
@@ -122,10 +126,15 @@ function PostCreateForm() {
           rows={8}
           value={content}
           onChange={handleChange}
+          className={styles.Input}
         />
       </Form.Group>
       {errors.content?.map((message, idx) => (
-        <Alert variant="warning" className={appStyles.Alert} key={idx}>
+        <Alert
+          variant="warning"
+          className={`${appStyles.Alert} text-center`}
+          key={idx}
+        >
           {message}
         </Alert>
       ))}
@@ -156,11 +165,11 @@ function PostCreateForm() {
               {image ? (
                 <>
                   <Figure>
-                    <Image className={appStyles.Image} src={image} rounded />
+                    <Image className={`${appStyles.Image} pt-2`} src={image} rounded />
                   </Figure>
                   <div>
                     <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.BlackOutline} btn`}
+                      className={`${btnStyles.Button} ${btnStyles.Black} btn`}
                       htmlFor="image-upload"
                     >
                       Change Image Selection
@@ -186,7 +195,11 @@ function PostCreateForm() {
               />
             </Form.Group>
             {errors.image?.map((message, idx) => (
-              <Alert variant="warning" className={appStyles.Alert} key={idx}>
+              <Alert
+                variant="warning"
+                className={`${appStyles.Alert} text-center`}
+                key={idx}
+              >
                 {message}
               </Alert>
             ))}

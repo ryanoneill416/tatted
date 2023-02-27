@@ -8,3 +8,8 @@
     border-bottom: 2px #b57dff solid;
 }
 
+@media only screen and (max-width: 600px) {
+  .Form {
+    font-size: small !important;
+  }
+}

@@ -8,3 +8,13 @@
     color: #212427;
     font-size: 90%;
 }
+
+@media only screen and (max-width: 600px) {
+    .Commenter {
+      font-size: 92.5%;
+    }
+
+    .Date {
+        font-size: 80%;
+    }
+  }

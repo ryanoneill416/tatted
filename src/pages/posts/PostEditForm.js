@@ -84,11 +84,15 @@ function PostEditForm() {
   };
 
   const textFields = (
-    <div className="text-center">
+    <div className="text-center pt-2 pb-3">
       <Form.Group>
         <Form.Label>Tattoo Style</Form.Label>
         {errors.style?.map((message, idx) => (
-          <Alert variant="warning" className={appStyles.Alert} key={idx}>
+          <Alert
+            variant="warning"
+            className={`${appStyles.Alert} text-center`}
+            key={idx}
+          >
             {message}
           </Alert>
         ))}
@@ -96,7 +100,7 @@ function PostEditForm() {
         <Form.Control
           as="select"
           name="style"
-          className="text-center"
+          className={`${styles.Select} text-center`}
           value={style}
           onChange={handleChange}
           aria-label="style"
@@ -122,10 +126,15 @@ function PostEditForm() {
           rows={8}
           value={content}
           onChange={handleChange}
+          className={styles.Input}
         />
       </Form.Group>
       {errors.content?.map((message, idx) => (
-        <Alert variant="warning" className={appStyles.Alert} key={idx}>
+        <Alert
+          variant="warning"
+          className={`${appStyles.Alert} text-center`}
+          key={idx}
+        >
           {message}
         </Alert>
       ))}
@@ -154,11 +163,11 @@ function PostEditForm() {
           >
             <Form.Group className="text-center">
               <Figure>
-                <Image className={appStyles.Image} src={image} rounded />
+                <Image className={`${appStyles.Image} pt-2`} src={image} rounded />
               </Figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.BlackOutline} btn`}
+                  className={`${btnStyles.Button} ${btnStyles.Black} btn`}
                   htmlFor="image-upload"
                 >
                   Change Image Selection
@@ -172,7 +181,11 @@ function PostEditForm() {
               />
             </Form.Group>
             {errors.image?.map((message, idx) => (
-              <Alert variant="warning" className={appStyles.Alert} key={idx}>
+              <Alert
+                variant="warning"
+                className={`${appStyles.Alert} text-center`}
+                key={idx}
+              >
                 {message}
               </Alert>
             ))}

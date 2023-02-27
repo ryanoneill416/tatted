@@ -4,9 +4,28 @@
 
 .Input {
   background: #ffffff;
-  border: 1px solid #f0f1f9;
+  border: 1px solid #dadadf;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.Input:focus {
+  box-shadow: none !important;
+  border: 1px solid #dadadf !important;
+  outline: none !important;
+}
+
+.Select {
+  background: #ffffff;
+  border: 1px solid #dadadf;
   box-sizing: border-box;
   border-radius: 2px;
   text-align: center;
-  padding: 10px;
+}
+
+.Select:focus {
+  box-shadow: none !important;
+  border: 1px solid #dadadf !important;
+  outline: none !important;
 }
