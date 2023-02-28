@@ -52,7 +52,6 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(signUpData)
       await axios.post("/register/", signUpData);
       history.push("/signin");
     } catch (err) {
