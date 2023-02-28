@@ -57,7 +57,7 @@ function PostDetailPage() {
         {hasLoaded ? (
           <>
             <Post {...post.results[0]} setPosts={setPost} postDetailPage />
-            <Container className={appStyles.Content}>
+            <Container className={`${appStyles.Content} pt-3 pb-2`}>
               {currentUser ? (
                 <CommentCreateForm
                   profile_id={currentUser.profile_id}
@@ -67,7 +67,7 @@ function PostDetailPage() {
                   setComments={setComments}
                 />
               ) : comments.results.length ? (
-                "Comments:"
+                <p className="my-auto">Comments:</p>
               ) : null}
               {comments.results.length ? (
                 <InfiniteScroll
