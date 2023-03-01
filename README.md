@@ -52,7 +52,7 @@ This app allows tattoo artists to post their work for visibility in the communit
 
 A live version of the application can be found <a href="https://tatted.herokuapp.com/" target="_blank">HERE</a><br>
 
-This is the fronternd repository of the application however you can view the backend REST API repository <a href="https://github.com/ryanoneill416/tatted_api" target="_blank">HERE </a><br><br>
+This is the front-end repository of the application however you can view the backend REST API repository <a href="https://github.com/ryanoneill416/tatted_api" target="_blank">HERE </a><br><br>
 
 <img src="documentation/readme_images/responsive-mockup.png">
 <a href="#top">Back to the top</a>
