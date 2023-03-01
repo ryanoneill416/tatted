@@ -92,7 +92,7 @@ As an authenticated user who is a tattoo artist, I can:
 
 <h2 id="agile-methodology">Agile Methodology</h2>
 
-The Agile Methodology was used to plan this project. This was implemented through Github and the kanban project board which can be seen here - <a href="https://github.com/users/ryanoneill416/projects/7" target="_blank"> tatted. user stories</a>
+The Agile Methodology was used to plan this project. This was implemented through Github and the kanban project board.
 
 Through the use of the Kanban board in the projects view in Github, the project was divived into a few different sections:
 
