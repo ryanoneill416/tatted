@@ -128,7 +128,7 @@ function ProfilePage() {
           />
         </div>
       ) : profile?.is_artist === true ? (
-        <div className="mt-3">
+        <div className="py-3">
           <Asset
             src={noResults}
             message={`No results found, ${profile?.owner} hasn't posted yet :)`}
